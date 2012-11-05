@@ -133,7 +133,7 @@
       emailData.message = $('.email-type form textarea[name=message]').val();
       console.log('button clicked');
       $.ajax({
-        url: config.baseUrl + '/api/send_email.php',
+        url: config.baseUrl + '/api/send_email',
         data: emailData,
         success: function(data) {
           console.log(data);
@@ -147,50 +147,50 @@
       });
     });
     /*
-        tu = new Block CONFIG.baseUrl+'api/instagram.php'
+        tu = new Block CONFIG.baseUrl+'api/instagram'
         tuc = new tu.collection()
         tuv = new tu.view
             collection: tuc
         tuc.fetch()
     */
 
-    fb = new Block(CONFIG.baseUrl + 'api/facebook.php');
+    fb = new Block(CONFIG.baseUrl + 'api/facebook');
     fbc = new fb.collection();
     fbv = new fb.view({
       collection: fbc
     });
     fbc.fetch();
-    i = new Block(CONFIG.baseUrl + 'api/instagram.php');
+    i = new Block(CONFIG.baseUrl + 'api/instagram');
     ic = new i.collection();
     iv = new i.view({
       collection: ic
     });
     ic.fetch();
-    t = new Block(CONFIG.baseUrl + 'api/twitter.php');
+    t = new Block(CONFIG.baseUrl + 'api/twitter');
     tc = new t.collection();
     tv = new t.view({
       collection: tc
     });
     tc.fetch();
-    f = new Block(CONFIG.baseUrl + 'api/foursquare.php');
+    f = new Block(CONFIG.baseUrl + 'api/foursquare');
     fc = new f.collection();
     fv = new f.view({
       collection: fc
     });
     fc.fetch();
-    g = new Block(CONFIG.baseUrl + 'api/github.php');
+    g = new Block(CONFIG.baseUrl + 'api/github');
     gc = new g.collection();
     gv = new g.view({
       collection: gc
     });
     gc.fetch();
-    p = new Block(CONFIG.baseUrl + 'api/projects.php');
+    p = new Block(CONFIG.baseUrl + 'api/projects');
     pc = new p.collection();
     pv = new p.view({
       collection: pc
     });
     pc.fetch();
-    a = new About(CONFIG.baseUrl + 'api/linkedin.php');
+    a = new About(CONFIG.baseUrl + 'api/linkedin');
     am = new a.model();
     av = new a.view({
       model: am

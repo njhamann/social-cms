@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Noah Hamann</title>
+    <title>Noah Hamann - A web developer living in Brooklyn</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -11,7 +11,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/isotope.css" rel="stylesheet">
     <link href="css/core.css" rel="stylesheet">
-<link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
