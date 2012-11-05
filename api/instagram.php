@@ -10,10 +10,16 @@ $data = array();
 $profileUrl = NULL;
 for($i=0; $i<5; $i++){
     $item = $items[$i];
+    $copy;
+    if($item->caption && $item->caption->text){
+        $copy = $item->caption->text;
+    }else{
+        $copy = NULL;
+    }
     $node = array(
         'title' => 'Just posted a photo',
         'image' => $item->images->standard_resolution->url,
-        'copy' => $item->caption->text ? $item->caption->text : NULL,
+        'copy' => $copy,
         'link_copy' => 'View photo',
         'link' => $item->link,
         'type_pretty' => 'Instagram',
