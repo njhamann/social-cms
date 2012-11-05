@@ -1,0 +1,166 @@
+<!--
+/**
+ * This file is used in conjunction with the 'LinkedIn' class, and the matching
+ * tokenExchange.php file, assisting in exchanging JavaScript access tokens for 
+ * a permanent REST token.
+ * 
+ * COPYRIGHT:
+ *   
+ * Copyright (C) 2011, fiftyMission Inc.
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a 
+ * copy of this software and associated documentation files (the "Software"), 
+ * to deal in the Software without restriction, including without limitation 
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in 
+ * all copies or substantial portions of the Software.  
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+ * IN THE SOFTWARE.  
+ *
+ * SOURCE CODE LOCATION:
+ * 
+ *   http://code.google.com/p/simple-linkedinphp/
+ *    
+ * REQUIREMENTS:
+ * 
+ * 1. You must have cURL installed on the server and available to PHP. 
+ * 2. You must be running PHP 5+.
+ * 3. You must have the Simple-LinkedIn library installed on the server.
+ * 4. You are running this script on the same domain as the LinkedIn 
+ *    JavaScript application that you would like to get the tokens for.
+ * 5. You are running this script from an HTTPS-enabled host.
+ * 6. You have the matching tokenExchange.php file, which this script calls.       
+ *  
+ * QUICK START:
+ * 
+ * There are two files needed to enable LinkedIn API functionality from PHP; the
+ * stand-alone OAuth library, and the Simple-LinkedIn library. The latest 
+ * version of the stand-alone OAuth library can be found on Google Code:
+ * 
+ *   http://code.google.com/p/oauth/
+ * 
+ * The latest versions of the Simple-LinkedIn library can be found here:
+ * 
+ *   http://code.google.com/p/simple-linkedinphp/
+ *   
+ * Once you have the library up and running, per the instructions on the 
+ * LinkedIn Developer's site, use this file as a guide showing you with a live 
+ * demonstration, how to POST the JavaScript bearer token to the matching 
+ * tokenExchange.php file, which will then use that token to retrieve the 
+ * permanent OAuth 1.0a token for future use. After you have this demo up and 
+ * running, modifying the JavaScript call on this page to fit into your LinkedIn
+ * authorization scheme should be trivial.  
+ * 
+ *   https://developer.linkedin.com/documents/exchange-jsapi-tokens-rest-api-oauth-tokens  
+ * 
+ * Finally, and this is IMPORTANT, be sure that:
+ * 
+ * 1. You are running this script on the same domain as the LinkedIn 
+ *    JavaScript application that you would like to get the tokens for.
+ * 2. You are running this script from an HTTPS-enabled host.
+ * 
+ * All that is left to do is to POST data to the matching tokenExchange.php 
+ * file by simply signing in to LinkedIn below - this will return the long-lived 
+ * REST token for the user. It's up to you to decide what to do with it in terms 
+ * of storing it in a database, in the 'cloud', etc.         
+ *   
+ * @version 3.3.0 - December 10, 2011
+ * @author Paul Mennega <paul@fiftymission.net>
+ * @copyright Copyright 2011, fiftyMission Inc. 
+ * @license http://www.opensource.org/licenses/mit-license.php The MIT License 
+ */
+-->
+
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <title>Simple-LinkedIn Demo &gt; Token Exchange</title>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="A demonstration page for the Simple-LinkedIn PHP class." />
+    <meta name="keywords" content="simple-linkedin,php,linkedin,api,class,library" />
+    
+    <style type="text/css">
+      body {font-family: Arial, Helvetica, sans-serif;}
+      footer {margin-top: 2em; text-align: center;}
+      pre {font-family: Courier, monospace;}
+    </style>
+          
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://platform.linkedin.com/in.js">
+      api_key: <your application key here>
+      authorize: true
+      credentials_cookie: true
+    </script>
+    <script type="text/javascript">
+      // redirect to required https      
+      if(document.location.protocol == 'http:') {
+        window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+      }
+      
+      function onLinkedInAuth() {
+        // POST the credential cookies
+        $.post('./tokenExchange.php', function(data) {
+          $('#returnData').append(data);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>LinkedIn JSAPI -&gt; REST Token Exchange Demo:</h1>
+    
+    <p>Copyright 2010 - 2011, Paul Mennega &lt;<a href="mailto:paul@fiftymission.net">paul@fiftymission.net</a>&gt;, fiftyMission Inc.</p>
+    
+    <p>Released under the MIT License - <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></p>
+    
+    <p>Full source code for both the Simple-LinkedIn class and this demo script can be found at:</p>
+    
+    <ul>
+      <li><a href="http://code.google.com/p/simple-linkedinphp/">http://code.google.com/p/simple-linkedinphp/</a></li>
+    </ul>          
+
+    <hr />
+    
+    <ul>
+      <li>Please note: 
+        <ul>
+          <li>The Simple-LinkedIn class requires PHP 5+ and cURL</li>
+          <li>These scripts should be run from the same domain as your LinkedIn application</li>
+          <li>These scripts should be run on a secure server</li>
+        </ul>
+      </li>
+    </ul>
+    
+    <hr />
+          
+    <h2>Sign-In to LinkedIn:</h2>
+    
+    <div>
+      <script type="IN/Login"
+        data-onauth="onLinkedInAuth">
+        You are logged in! 
+      </script>
+    </div>     
+    
+    <h2>Results:</h2>
+    
+    <div id="returnData"></div>
+    
+    <hr />
+    
+    <footer>
+      <div>Copyright 2010 - 2011, fiftyMission Inc. (Paul Mennega &lt;<a href="mailto:paul@fiftymission.net">paul@fiftymission.net</a>&gt;)</div>
+      <div>Released under the MIT License - <a href="http://www.opensource.org/licenses/mit-license.php">http://www.opensource.org/licenses/mit-license.php</a></div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,203 @@
+body {
+  padding: 0 0 0 0;
+  background: #FAF9F4;
+  background-image: url(../img/striped_lens.png);
+  background-position: initial initial;
+  background-repeat: initial initial; }
+
+.text-center {
+  text-align: center; }
+
+.the-question-wrap {
+  height: 40px; }
+  .the-question-wrap .the-question {
+    font-style: italic;
+    font-size: 17px;
+    color: #999;
+    font-weight: 300;
+    margin: 10px; }
+
+#block_container {
+  margin: 0 0 30px 0; }
+
+.page-item {
+  text-align: center;
+  float: left;
+  width: 300px;
+  margin: 10px;
+  min-height: 200px;
+  border-radius: 3px;
+  background: #FFF;
+  box-shadow: 0px 0px 4px #CCC; }
+  .page-item .icon-wrapper {
+    border-radius: 3px;
+    padding: 3px;
+    background: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 47px; }
+    .page-item .icon-wrapper.sm-wrap {
+      width: 26px; }
+    .page-item .icon-wrapper .profile-link {
+      float: right;
+      margin: 0 6px 0 0; }
+    .page-item .icon-wrapper .item-link {
+      float: right;
+      margin: 0 6px 0 0; }
+  .page-item .item-image {
+    text-align: left;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+    background: #CCC;
+    min-height: 100px;
+    max-height: 200px;
+    border: 1px solid #EEE; }
+  .page-item .item-icon {
+    position: relative;
+    top: -37px;
+    background: transparent;
+    width: 50px;
+    height: 50px;
+    margin: 0px 125px -34px 125px; }
+    .page-item .item-icon img {
+      box-shadow: 0px 0px 10px #333;
+      border-radius: 5px; }
+  .page-item .item-headline {
+    margin: 10px 10px; }
+    .page-item .item-headline p {
+      font-size: 18px;
+      font-weight: 400;
+      font-family: 'Merriweather', serif;
+      color: #333;
+      line-height: 25px; }
+  .page-item .item-copy {
+    margin: 10px 10px; }
+    .page-item .item-copy p {
+      font-weight: 300px;
+      color: #333; }
+  .page-item .item-meta {
+    margin: 10px 0 10px 0; }
+    .page-item .item-meta p {
+      font-weight: 300px;
+      color: #999;
+      font-size: 12px; }
+  .page-item.about-type {
+    text-align: left; }
+    .page-item.about-type .item-meta {
+      margin: 0 10px; }
+    .page-item.about-type .sep {
+      margin: 16px 10px 11px 10px; }
+    .page-item.about-type .item-image {
+      margin: 10px 0px 0 10px;
+      background: #FFF;
+      border: none;
+      float: left;
+      border-radius: 0px;
+      min-height: 80px; }
+      .page-item.about-type .item-image img {
+        border-radius: 5px; }
+    .page-item.about-type .about-type-header {
+      float: left;
+      width: 198px; }
+      .page-item.about-type .about-type-header .item-headline p {
+        margin: 0; }
+      .page-item.about-type .about-type-header p.position {
+        line-height: 21px;
+        color: #666;
+        font-size: 15px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .page-item.social-card-type {
+    padding: 20px 0 20px 0; }
+    .page-item.social-card-type a {
+      display: block; }
+    .page-item.social-card-type .item-headline {
+      margin: 10px 10px 20px 10px; }
+    .page-item.social-card-type .row-fluid {
+      padding: 0 0 10px 0;
+      width: 250px;
+      margin: 0 auto; }
+    .page-item.social-card-type img {
+      border-radius: 5px; }
+  .page-item.email-type {
+    padding: 20px;
+    width: 260px;
+    text-align: left; }
+    .page-item.email-type .contact-links p {
+      margin: 0 0 5px 0; }
+    .page-item.email-type form {
+      margin: 0; }
+
+.fluid-header {
+  padding: 10px 0 5px 0;
+  color: #666;
+  background: #FFF;
+  /* Old browsers */
+  box-shadow: 0px 0px 7px #999; }
+  .fluid-header p.lead {
+    margin: 0; }
+  .fluid-header p {
+    font-weight: 300; }
+  .fluid-header .main-nav ul {
+    margin: 30px 0 0 0; }
+    .fluid-header .main-nav ul li {
+      margin: 0 0 0 15px;
+      float: left; }
+      .fluid-header .main-nav ul li a {
+        font-weight: 300;
+        color: #666;
+        font-size: 15px; }
+        .fluid-header .main-nav ul li a.active {
+          text-decoration: underline; }
+
+.fluid-content {
+  padding: 10px 0 0 0; }
+
+.content-wrapper {
+  margin: 0 0 0 0; }
+  .content-wrapper .sub-lead {
+    color: #999; }
+
+ol {
+  margin: 0;
+  list-style-type: none; }
+
+.sep {
+  padding: 0 0 0 0;
+  margin: 20px 0 20px 0;
+  border-bottom: 1px solid #CCC;
+  font-weight: 300;
+  font-size: 16px; }
+
+.ybh {
+  display: none; }
+
+.ybf {
+  display: none !important; }
+
+.ybr {
+  height: 760px !important; }
+
+.tumblr_post {
+  margin: 30px 0 0 0; }
+
+.tumblr_title {
+  margin: 0 0 10px;
+  font-weight: 300;
+  font-size: 22px; }
+
+#content_column .lead a {
+  font-size: 14px; }
+
+.pipesThumbnail {
+  margin-left: 10px; }
+
+.pipesText {
+  float: left;
+  width: 785px; }
+
+#tumblr_wrapper img {
+  margin-bottom: 10px;
+  border: 1px solid #EEE;
+  background: white;
+  padding: 5px; }
