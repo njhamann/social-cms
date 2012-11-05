@@ -14,6 +14,9 @@ for($i=0; $i<5; $i++){
     $copy = '';
     $branch = $item->payload->ref;
     $repo = $item->repo->name;
+    if($repo == 'njhamann/social-cms' && $i>0){
+        continue;
+    }
     if($type == 'PushEvent'){
         $copy = 'Pushed to '.$branch.' at '.$repo;
     }else if($type == 'CreateEvent'){
@@ -26,7 +29,7 @@ for($i=0; $i<5; $i++){
         'type_pretty' => 'GitHub',
         'type' => 'github',
         'link_copy' => 'View repo',
-        'link' => $item->repo->url,
+        'link' => 'https://github.com/'.$repo,
         'icon' => NULL,
         'meta' => NULL,
         'feed' => NULL,
