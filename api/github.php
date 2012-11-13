@@ -12,15 +12,22 @@ for($i=0; $i<5; $i++){
     $item = $items[$i];
     $type = $item->type;
     $copy = '';
-    $branch = $item->payload->ref;
+    $branch = '';
+    if(isset($item->payload->ref)){
+        $branch = $item->payload->ref;
+    }
     $repo = $item->repo->name;
+    /*
     if($repo == 'njhamann/social-cms' && $i>0){
         continue;
     }
+    */
     if($type == 'PushEvent'){
         $copy = 'Pushed to '.$branch.' at '.$repo;
     }else if($type == 'CreateEvent'){
         $copy = 'Created '.$branch.' at '.$repo;
+    }else if($type = 'WatchEvent'){
+        $copy = 'I '.$item->payload->action.' watching '.$repo; 
     }
     $node = array(
         'title' => $repo,
