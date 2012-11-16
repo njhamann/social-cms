@@ -3,6 +3,7 @@ header('Content-type: application/json');
 require('../config/keys.php');
 require('../lib/twitter/config.php');
 require('../lib/twitter/twitteroauth/twitteroauth.php');
+require('../lib/util/linkify.php');
 
 function getConnectionWithAccessToken($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret) {
     $connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
@@ -22,7 +23,7 @@ for($i=0; $i<5; $i++){
     $screenName = $item->user->screen_name;
     $statusId = $item->id_str;
     $link = 'https://twitter.com/'.$screenName.'/status/'.$statusId;
-    $title = $item->text;
+    $title = auto_link_text($item->text);
     $node = array(
         'title' => $title,
         'image' => $defaultImage,
