@@ -5,7 +5,29 @@ CONFIG =
 TEMPLATES = 
     about: $('#about').html()
     block: $('#block').html()
+    modal: $('#modal').html()
 
+
+ImageModal = (apiPath) ->
+    
+    ImageModalView = Backbone.View.extend
+        el: 'body'
+        template: TEMPLATES.model
+        initialize: ->
+            _this = this                       
+            _this.render()                      
+            return
+        render: ->
+            data = {};
+            data.item = this.model.toJSON()
+            templ = _.template this.template
+            $el.append(templ(data));
+            $('#myModal').modal('show');
+            return
+
+    return {
+        view: ImageModalView
+    }
 
 About = (apiPath) ->
     
@@ -18,6 +40,9 @@ About = (apiPath) ->
     AboutView = Backbone.View.extend
         el: '#block_container'
         template: TEMPLATES.about
+        events:
+          'click .instagram-type': 'showImageModal' 
+          return 
         initialize: ->
             _this = this                       
             this.model.bind 'change', ->
@@ -35,7 +60,11 @@ About = (apiPath) ->
                     sortAscending: false            
             ,1000
             return
-
+        showImageModal: (e)->
+            console.log 'hello'
+            var modal = new Modal()
+            var modalView = new modal.view()
+            return    
     return {
         view: AboutView
         model: AboutModel 
@@ -193,7 +222,8 @@ ga = ->
 g = new ga()
 g.events()
 
+window.
+
 window.About = About
 window.Block = Block
-
 

@@ -150,6 +150,21 @@
         <div class="clearfix"></div>
     </div>
     </div>
+    <script type="text/html" id="modal">
+        <div id="generic_modal" class="modal hide fade">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Modal header</h3>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary">Save changes</button>
+            </div>
+        </div> 
+    </script>
     <script type="text/html" id="about">
         <div class="page-item about-type" data-epoch="0">
             <div class="item-image">
