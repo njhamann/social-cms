@@ -152,16 +152,14 @@
     </div>
     <script type="text/html" id="modal">
         <div id="generic_modal" class="modal hide fade">
+            <% if(item.copy){ %>
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">Modal header</h3>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <p class="lead"><%=item.copy%></p>
             </div>
+            <% } %> 
             <div class="modal-body">
-                <p>One fine body…</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                <button class="btn btn-primary">Save changes</button>
+                <img src="<%=item.image%>" />
             </div>
         </div> 
     </script>
@@ -189,7 +187,7 @@
     <script type="text/html" id="block">
         <% for(var i=0; i<items.length; i++){ %>
         <% item = items[i] %>
-        <div class="page-item <%=item.type%>-type" data-epoch="<% item.epoch ? print(item.epoch) : print(0) %>">
+        <div data-id="<%=item.id%>" class="page-item <%=item.type%>-type" data-epoch="<% item.epoch ? print(item.epoch) : print(0) %>">
             <% if(item.profile_url || item.link){ %>
             <div style="display:none;" class="icon-wrapper <% item.profile_url && item.link ? print('lg-wrap') : print('sm-wrap') %>">
                 <% if(item.profile_url){ %>

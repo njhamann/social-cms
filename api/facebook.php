@@ -11,6 +11,7 @@ $defaultImage = 'img/default_facebook.png';
 for($i=0; $i<5; $i++){
     $item = $items[$i];
     $node = array(
+        'id' => $item->id,
         'title' => $item->message,
         'image' => $defaultImage,
         'type_pretty' => 'Facebook',

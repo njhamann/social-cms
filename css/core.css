@@ -29,6 +29,8 @@ body {
   border-radius: 3px;
   background: #FFF;
   box-shadow: 0px 0px 4px #CCC; }
+  .page-item.instagram-type .item-image {
+    cursor: pointer; }
   .page-item .icon-wrapper {
     border-radius: 3px;
     padding: 3px;
@@ -129,17 +131,21 @@ body {
       margin: 0; }
 
 .fluid-header {
+  border-bottom: 5px solid #EEE;
   padding: 10px 0 5px 0;
   color: #666;
   background: #FFF;
   /* Old browsers */
   box-shadow: 0px 0px 7px #999; }
   .fluid-header p.lead {
-    margin: 0; }
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    line-height: 23px; }
   .fluid-header p {
+    margin: 0;
     font-weight: 300; }
   .fluid-header .main-nav ul {
-    margin: 30px 0 0 0; }
+    margin: 23px 0 0 0; }
     .fluid-header .main-nav ul li {
       margin: 0 0 0 15px;
       float: left; }
@@ -156,6 +162,7 @@ body {
 .content-wrapper {
   margin: 0 0 0 0; }
   .content-wrapper .sub-lead {
+    margin: 0 0 5px 0;
     color: #999; }
 
 ol {
@@ -201,3 +208,12 @@ ol {
   border: 1px solid #EEE;
   background: white;
   padding: 5px; }
+
+.modal-body {
+  max-height: none; }
+
+#generic_modal {
+  margin-top: 0px;
+  top: 10px; }
+  #generic_modal p.lead {
+    margin: 0; }

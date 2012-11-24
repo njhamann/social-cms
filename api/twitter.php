@@ -25,6 +25,7 @@ for($i=0; $i<5; $i++){
     $link = 'https://twitter.com/'.$screenName.'/status/'.$statusId;
     $title = auto_link_text($item->text);
     $node = array(
+        'id' => $item->id,
         'title' => $title,
         'image' => $defaultImage,
         'copy' => NULL,

@@ -30,6 +30,7 @@ for($i=0; $i<5; $i++){
         $copy = 'I '.$item->payload->action.' watching '.$repo; 
     }
     $node = array(
+        'id' => $item->id,
         'title' => $repo,
         'image' => $defaultImage,
         'copy' => $copy,

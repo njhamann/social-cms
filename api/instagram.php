@@ -7,7 +7,7 @@ $json = file_get_contents($url);
 $info = json_decode($json);
 $items = $info->data;
 $data = array();
-$profileUrl = NULL;
+$profileUrl = 'http://instagram.com/njhamann';
 for($i=0; $i<5; $i++){
     $item = $items[$i];
     $copy;
@@ -17,6 +17,7 @@ for($i=0; $i<5; $i++){
         $copy = NULL;
     }
     $node = array(
+        'id' => $item->id,
         'title' => 'Just posted a photo',
         'image' => $item->images->standard_resolution->url,
         'copy' => $copy,

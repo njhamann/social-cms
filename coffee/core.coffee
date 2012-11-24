@@ -7,26 +7,31 @@ TEMPLATES =
     block: $('#block').html()
     modal: $('#modal').html()
 
+Bootstrap = 
+    Collections: {}
+    Models: {}
+    Views: {}
 
-ImageModal = (apiPath) ->
+Modal = (apiPath) ->
     
-    ImageModalView = Backbone.View.extend
+    ModalView = Backbone.View.extend
         el: 'body'
-        template: TEMPLATES.model
+        template: TEMPLATES.modal
         initialize: ->
-            _this = this                       
-            _this.render()                      
+            @render()                      
             return
         render: ->
+            console.log('ModelView');
+            $('#generic_modal').remove()
             data = {};
             data.item = this.model.toJSON()
             templ = _.template this.template
-            $el.append(templ(data));
-            $('#myModal').modal('show');
+            @$el.append(templ(data));
+            $('#generic_modal').modal('show');
             return
 
     return {
-        view: ImageModalView
+        view: ModalView
     }
 
 About = (apiPath) ->
@@ -40,9 +45,6 @@ About = (apiPath) ->
     AboutView = Backbone.View.extend
         el: '#block_container'
         template: TEMPLATES.about
-        events:
-          'click .instagram-type': 'showImageModal' 
-          return 
         initialize: ->
             _this = this                       
             this.model.bind 'change', ->
@@ -60,11 +62,6 @@ About = (apiPath) ->
                     sortAscending: false            
             ,1000
             return
-        showImageModal: (e)->
-            console.log 'hello'
-            var modal = new Modal()
-            var modalView = new modal.view()
-            return    
     return {
         view: AboutView
         model: AboutModel 
@@ -102,7 +99,6 @@ Block = (apiPath) ->
             ,1000
             $('.item-link, .profile-link').tooltip()
             return
-
     return {
         view: BlockView
         model: BlockModel 
@@ -118,6 +114,17 @@ init = ->
             number: ($el) -> 
                 parseInt($el.attr('data-epoch'), 10)
 
+
+    
+    $(document).on 'click', '.instagram-type .item-image img', (e) ->
+        e.preventDefault()
+        console.log 'hello2'
+        id = $(e.target).parents('.instagram-type').attr 'data-id'
+        item = Bootstrap.Collections.instagram.get id
+        modal = new Modal()
+        modalView = new modal.view 
+            model: item
+        return    
 
     $('.main-nav ul li').on 'click', 'a', (e) ->
         #filter
@@ -173,36 +180,42 @@ init = ->
     fbv = new fb.view
         collection: fbc
     fbc.fetch()
+    Bootstrap.Collections.facebook = fbc
 
     i = new Block CONFIG.baseUrl+'api/instagram.php'
     ic = new i.collection()
     iv = new i.view
         collection: ic
     ic.fetch()
+    Bootstrap.Collections.instagram = ic
 
     t = new Block CONFIG.baseUrl+'api/twitter.php'
     tc = new t.collection()
     tv = new t.view
         collection: tc
     tc.fetch()
+    Bootstrap.Collections.twitter = tc
 
     f = new Block CONFIG.baseUrl+'api/foursquare.php'
     fc = new f.collection()
     fv = new f.view
         collection: fc
     fc.fetch()
+    Bootstrap.Collections.foursquare = fc
 
     g = new Block CONFIG.baseUrl+'api/github.php'
     gc = new g.collection()
     gv = new g.view
         collection: gc
     gc.fetch()
+    Bootstrap.Collections.github = gc
 
     p = new Block CONFIG.baseUrl+'api/projects.php'
     pc = new p.collection()
     pv = new p.view
         collection: pc
     pc.fetch()
+    Bootstrap.Collections.projects = pc
 
     a = new About CONFIG.baseUrl+'api/linkedin.php'
     am = new a.model()
@@ -222,8 +235,7 @@ ga = ->
 g = new ga()
 g.events()
 
-window.
-
+window.Bootstrap = Bootstrap
 window.About = About
 window.Block = Block
 

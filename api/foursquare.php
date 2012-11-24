@@ -10,6 +10,7 @@ $profileUrl = 'http://foursquare.com/njhamann';
 for($i=0; $i<5; $i++){
     $item = $items[$i];
     $node = array(
+        'id' => $item->id,
         'title' => 'Checked in at '. $item->venue->name,
         'image' => 'http://maps.google.com/maps/api/staticmap?center='.$item->venue->location->lat.','.$item->venue->location->lng.'&zoom=16&size=420x260&maptype=roadmap&sensor=false&markers=color:red|'.$item->venue->location->lat.','.$item->venue->location->lng,
         'type_pretty' => 'foursquare',

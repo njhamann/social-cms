@@ -4,6 +4,7 @@ header('Content-type: application/json');
 $profileUrl = NULL;
 $items = array(
     array(
+        'id' => 1,
         'title' => 'Cadence by SocialFlow',
         'image' => 'img/project_cadence.png',
         'copy' => NULL,
@@ -18,6 +19,7 @@ $items = array(
         'profile_url' => $profileUrl
     ),
     array(
+        'id' => 2,
         'title' => 'Crescendo by SocialFlow',
         'image' => 'img/project_crescendo.png',
         'copy' => NULL,
@@ -32,6 +34,7 @@ $items = array(
         'profile_url' => $profileUrl
     ),
     array(
+        'id' => 3,
         'title' => 'International Trucks iPhone app',
         'image' => 'img/project_it_iphone.png',
         'copy' => NULL,
@@ -46,6 +49,7 @@ $items = array(
         'profile_url' => $profileUrl
     ),
     array(
+        'id' => 4,
         'title' => 'TerraStar Truck Configurator',
         'image' => 'img/project_it_config.png',
         'copy' => NULL,
@@ -61,6 +65,7 @@ $items = array(
         'profile_url' => $profileUrl
     ),
     array(
+        'id' => 5,
         'title' => 'Ameriprise Advisors',
         'image' => 'img/project_ameriprise.png',
         'copy' => NULL,
