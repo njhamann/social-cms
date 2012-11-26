@@ -183,23 +183,55 @@ background-image: url(../img/striped_lens.png); background-position: initial ini
         font-weight:300;
     }
     .main-nav{
-        ul{
+        ul.unstyled{
             margin: 23px 0 0 0;
-            li{
+            > li{
                 margin: 0 0 0 15px;
                 float:left;
-                a{
+                a.top-level{
                     font-weight:300;
-                    color:#666;
+                    color:#999;
                     font-size:15px;
+                    &:hover{
+                        text-decoration:none;
+                        color:#666;
+                    }
                     &.active{
-                        text-decoration:underline;
+                        color:#666;
+                    }
+                    b.caret{
+                        margin:10px 0 0 0;
+                        opacity:.5;
+                    }
+                
+                }
+                .dropdown-menu{
+                    margin:-2px 0 0 0;
+                    li{
+                        a{
+                            color:#666;
+                            &:hover, &:active, &:visited, &:focus{
+                                color:#FFF;
+                            }
+                        }
                     }
                 }
             }
         }
     }
 }
+
+
+li.dropdown:hover ul.dropdown-menu{
+    display: block;    
+}
+
+a.menu:after, .dropdown-toggle:after {
+  content: none;
+}
+
+
+
 .fluid-content{
     padding:10px 0 0 0;
 }

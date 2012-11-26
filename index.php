@@ -39,11 +39,21 @@
                 </div>
                 <div class="span8 main-nav">
                     <ul class="pull-right unstyled">
-                        <li><a class="active" data-filter="*" href="#">All</a></li>
-                        <li><a data-filter=".social-card-type, .about-type, .email-type" href="#">About</a></li>
-                        <li><a data-filter=".project-type" href="#">Projects</a></li>
-                        <li><a data-filter=".instagram-type, .foursquare-type, .facebook-type, .github-type, .twitter-type, .tumblr-type" href="#">Networks</a></li>
-                        <li><a data-filter=".social-card-type, .email-type" href="#">Contact</a></li>
+                        <li class="dropdown">
+                            <a data-filter=".instagram-type, .foursquare-type, .facebook-type, .github-type, .twitter-type, .tumblr-type" href="#" class="active top-level">Networks <b class="caret"></b></a>
+                        
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a tabindex="-1" href="#" data-filter=".facebook-type">Facebook</a></li>
+                            <li><a tabindex="-1" href="#" data-filter=".foursquare-type">Foursquare</a></li>
+                            <li><a tabindex="-1" href="#" data-filter=".github-type">Github</a></li>
+                            <li><a tabindex="-1" href="#" data-filter=".instagram-type">Instagram</a></li>
+                            <li><a tabindex="-1" href="#" data-filter=".twitter-type">Twitter</a></li>
+                        </ul> 
+                        
+                        </li>
+                        <li><a data-filter=".project-type" href="#" class="top-level">Projects</a></li>
+                        <li><a data-filter=".social-card-type, .about-type" href="#" class="top-level">About</a></li>
+                        <li><a data-filter=".social-card-type, .email-type" href="#" class="top-level">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -54,9 +64,8 @@
         <div class="container">
             <div class="row the-question-wrap">
                 <p class="text-center the-question">-- What I've been up to --</p>
-                <p class="text-center the-question" style="display:none;">-- A little bit about me --</p>
                 <p class="text-center the-question" style="display:none;">-- My latest projects --</p>
-                <p class="text-center the-question" style="display:none;">-- Activity on my networks --</p>
+                <p class="text-center the-question" style="display:none;">-- A little bit about me --</p>
                 <p class="text-center the-question" style="display:none;">-- Lets talk --</p>
             </div>
             <div class="row">

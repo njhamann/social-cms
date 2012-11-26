@@ -148,7 +148,7 @@
         model: item
       });
     });
-    $('.main-nav ul li').on('click', 'a', function(e) {
+    $('.main-nav ul li').on('click', 'a.top-level', function(e) {
       var filter, loc;
       e.preventDefault();
       filter = $(this).attr('data-filter');
@@ -156,9 +156,22 @@
         filter: filter
       });
       loc = $(this).parent().index();
-      console.log(loc);
       $('.main-nav ul li a').removeClass('active');
       $(this).addClass('active');
+      $('.the-question').fadeOut(500);
+      $('.the-question').eq(loc).delay(500).fadeIn(500);
+    });
+    $('.main-nav ul li').on('click', 'ul.dropdown-menu li a', function(e) {
+      var filter, loc;
+      e.preventDefault();
+      filter = $(this).attr('data-filter');
+      CONFIG.$cont.isotope({
+        filter: filter
+      });
+      loc = $(this).parent().index();
+      $('.main-nav ul > li > a').removeClass('active');
+      $(this).parents('ul.dropdown-menu').siblings('a.top-level').addClass('active');
+      loc = $('.main-nav ul > li > a.active').index();
       $('.the-question').fadeOut(500);
       $('.the-question').eq(loc).delay(500).fadeIn(500);
     });

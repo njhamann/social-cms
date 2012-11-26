@@ -126,15 +126,27 @@ init = ->
             model: item
         return    
 
-    $('.main-nav ul li').on 'click', 'a', (e) ->
+    $('.main-nav ul li').on 'click', 'a.top-level', (e) ->
         #filter
         e.preventDefault()
         filter = $(this).attr 'data-filter'
         CONFIG.$cont.isotope({ filter: filter });
         loc = $(this).parent().index()
-        console.log loc
         $('.main-nav ul li a').removeClass 'active'
         $(this).addClass 'active'
+        $('.the-question').fadeOut 500
+        $('.the-question').eq(loc).delay(500).fadeIn 500
+        return
+    
+    $('.main-nav ul li').on 'click', 'ul.dropdown-menu li a', (e) ->
+        #filter
+        e.preventDefault()
+        filter = $(this).attr 'data-filter'
+        CONFIG.$cont.isotope({ filter: filter });
+        loc = $(this).parent().index()
+        $('.main-nav ul > li > a').removeClass 'active'
+        $(this).parents('ul.dropdown-menu').siblings('a.top-level').addClass 'active'
+        loc = $('.main-nav ul > li > a.active').index()
         $('.the-question').fadeOut 500
         $('.the-question').eq(loc).delay(500).fadeIn 500
         return
