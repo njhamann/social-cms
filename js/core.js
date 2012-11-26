@@ -188,7 +188,7 @@
       emailData.message = $('.email-type form textarea[name=message]').val();
       console.log('button clicked');
       $.ajax({
-        url: config.baseUrl + '/api/send_email.php',
+        url: CONFIG.baseUrl + 'api/send_email.php',
         data: emailData,
         success: function(data) {
           console.log(data);
