@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Noah Hamann - A web developer living in Brooklyn</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Noah Hamann - A web developer living in Brooklyn">
     <meta name="author" content="">
     <link href='http://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -230,7 +230,7 @@
             <% } %>
             <% if(item.epoch && item.type != 'project'){ %>
             <div class="item-meta">
-                <p><%= moment((parseInt(item.epoch)*1000)).format('MMMM Do YYYY, h:mm a') %></p>
+                <p><%= moment((parseInt(item.epoch)*1000)).format('MMMM Do, YYYY, h:mm a') %></p>
             </div>
             <% } %>
         </div>

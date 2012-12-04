@@ -23,7 +23,12 @@ for($i=0; $i<5; $i++){
     $screenName = $item->user->screen_name;
     $statusId = $item->id_str;
     $link = 'https://twitter.com/'.$screenName.'/status/'.$statusId;
-    $title = auto_link_text($item->text);
+    if(isset($item->retweeted_status)){
+        $rtUser = $item->retweeted_status->user->screen_name;
+        $title = 'RT @' . $rtUser . ': ' . auto_link_text($item->retweeted_status->text);
+    }else{
+        $title = auto_link_text($item->text);
+    }
     $node = array(
         'id' => $item->id,
         'title' => $title,
