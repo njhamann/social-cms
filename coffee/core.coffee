@@ -96,6 +96,8 @@ Block = (apiPath) ->
                 CONFIG.$cont.isotope
                     sortBy: 'number'
                     sortAscending: false            
+                filter = $('.main-nav a.active').attr 'data-filter'
+                CONFIG.$cont.isotope filter: filter
             ,1000
             $('.item-link, .profile-link').tooltip()
             return

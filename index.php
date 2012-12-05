@@ -223,6 +223,15 @@
                 <p><%=item.copy%></p>
             </div>
             <% } %>
+            <% if(item.feed && item.feed.length > 0){ %>
+            <div class="item-feed">
+                <ul>
+                    <% for(var a=0; a<item.feed.length; a++){ %>
+                    <li><%= item.feed[a] %></li>
+                    <% } %>
+                </ul>
+            </div>
+            <% } %>
             <% if(item.meta){ %>
             <div class="item-meta">
                 <p><%= item.meta %></p>

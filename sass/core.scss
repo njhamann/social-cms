@@ -94,6 +94,22 @@ background-image: url(../img/striped_lens.png); background-position: initial ini
             color:#333;
         }
     }
+    .item-feed{
+        margin:10px 10px; 
+        ul{
+            margin:0;
+            padding:0;
+            li{
+                list-style-type: none;
+                color:#666;
+                font-style:italic;
+            }
+        }
+        p{
+            font-weight:300px;
+            color:#333;
+        }
+    }
     .item-meta{
         margin:10px 0 10px 0;
         p{

@@ -111,9 +111,14 @@
         $newItems = $(templ(data));
         CONFIG.$cont.isotope('insert', $newItems);
         setTimeout(function() {
-          return CONFIG.$cont.isotope({
+          var filter;
+          CONFIG.$cont.isotope({
             sortBy: 'number',
             sortAscending: false
+          });
+          filter = $('.main-nav a.active').attr('data-filter');
+          return CONFIG.$cont.isotope({
+            filter: filter
           });
         }, 1000);
         $('.item-link, .profile-link').tooltip();

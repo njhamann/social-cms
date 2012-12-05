@@ -78,6 +78,18 @@ body {
     .page-item .item-copy p {
       font-weight: 300px;
       color: #333; }
+  .page-item .item-feed {
+    margin: 10px 10px; }
+    .page-item .item-feed ul {
+      margin: 0;
+      padding: 0; }
+      .page-item .item-feed ul li {
+        list-style-type: none;
+        color: #666;
+        font-style: italic; }
+    .page-item .item-feed p {
+      font-weight: 300px;
+      color: #333; }
   .page-item .item-meta {
     margin: 10px 0 10px 0; }
     .page-item .item-meta p {

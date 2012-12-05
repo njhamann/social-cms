@@ -13,6 +13,7 @@ for($i=0; $i<5; $i++){
     $type = $item->type;
     $copy = '';
     $branch = '';
+    $commits = array();
     if(isset($item->payload->ref)){
         $branch = $item->payload->ref;
     }
@@ -24,6 +25,11 @@ for($i=0; $i<5; $i++){
     */
     if($type == 'PushEvent'){
         $copy = 'Pushed to '.$branch.' at '.$repo;
+        if(isset($item->payload->commits)){
+            foreach($item->payload->commits as $value){
+                array_push($commits, $value->message);
+            }
+        }
     }else if($type == 'CreateEvent'){
         $copy = 'Created '.$branch.' at '.$repo;
     }else if($type = 'WatchEvent'){
@@ -31,16 +37,16 @@ for($i=0; $i<5; $i++){
     }
     $node = array(
         'id' => $item->id,
-        'title' => $repo,
+        'title' => $copy,
         'image' => $defaultImage,
-        'copy' => $copy,
+        'copy' => NULL,
         'type_pretty' => 'GitHub',
         'type' => 'github',
         'link_copy' => 'View repo',
         'link' => 'https://github.com/'.$repo,
         'icon' => NULL,
         'meta' => NULL,
-        'feed' => NULL,
+        'feed' => $commits,
         'epoch' => strtotime($item->created_at),
         'profile_url' => $profileUrl
     );
