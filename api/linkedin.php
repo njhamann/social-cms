@@ -10,6 +10,7 @@ $OBJ_linkedin->setResponseFormat(LINKEDIN::_RESPONSE_JSON);
 $json = $OBJ_linkedin->profile('~:(first-name,last-name,formatted-name,industry,skills,summary,specialties,positions,picture-url,educations,interests,headline,phone-numbers,email-address,member-url-resources)');
 $info = json_decode($json['linkedin']);    
 
+
 $node = array(
     'name' => $info->formattedName,
     'headline' => $info->headline,
