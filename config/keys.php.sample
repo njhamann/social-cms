@@ -1,0 +1,36 @@
+<?php
+$facebook = Array(
+    'facebook_id' => YOUR_FACEBOOK_ID,
+    'access_token' => 'YOUR_FACEBOOK_ACCESS_TOKEN'
+);
+$instagram = Array(
+    'access_token' => 'YOUR_INSTAGRAM_ACCESS_TOKEN'
+);
+
+$tumblr = Array(
+    'api_key' => 'YOUR_TUMBLR_API_KEY'
+);
+$foursquare = Array(
+    'oauth_token' => 'FOURSQUARE_OAUTH_TOKEN'
+);
+$linkedin = Array( 
+    'config' => array(
+        'appKey'       => 'LINKEDIN_APP_KEY',
+        'appSecret'    => 'LINKEDIN_APP_SECRET',
+        'callbackUrl'  => NULL 
+    ),
+    'access' => Array( 
+        'oauth_token' => 'LINKEDIN_OAUTH_TOKEN', 
+        'oauth_token_secret' => 'LINKEDIN_TOKEN_SECRET', 
+        'oauth_expires_in' => 5183999, 
+        'oauth_authorization_expires_in' => 5183999 
+    )
+);
+$tw = Array(
+    'consumer_key' => 'TWITTER_CONSUMER_KEY',
+    'consumer_secret' => 'TWITTER_CONSUMER_SECRET',
+    'access_token' => 'TWITTER_ACCESS_TOKEN',
+    'access_token_secret' => 'TWITTER_ACCESS_TOKEN_SECRET'
+);
+
+?>
