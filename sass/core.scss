@@ -29,7 +29,7 @@ background-image: url(../img/striped_lens.png); background-position: initial ini
     border-radius: 3px;
     background:#FFF;
     box-shadow:0px 0px 4px #CCC;
-    &.instagram-type{
+    &.instagram-type, &.vine-type, &.foursquare-type{
         .item-image{
             cursor: pointer;
         }
@@ -311,6 +311,11 @@ ol{
 }
 .modal-body{
     max-height:none;
+    .map-container{
+        img{
+            max-width: none;
+        }
+    }
 }
 #generic_modal{
     margin-top:0px;

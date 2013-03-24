@@ -8,19 +8,17 @@ $info = json_decode($json);
 $items = $info->data;
 $data = array();
 $profileUrl = 'http://instagram.com/njhamann';
-for($i=0; $i<5; $i++){
+for($i=0; $i<10; $i++){
     $item = $items[$i];
-    $copy;
+    $title = 'Just posted a photo';
     if($item->caption && $item->caption->text){
-        $copy = $item->caption->text;
-    }else{
-        $copy = NULL;
+        $title = $item->caption->text;
     }
     $node = array(
         'id' => $item->id,
-        'title' => 'Just posted a photo',
+        'title' => $title,
         'image' => $item->images->standard_resolution->url,
-        'copy' => $copy,
+        'copy' => NULL,
         'link_copy' => 'View photo',
         'link' => $item->link,
         'type_pretty' => 'Instagram',

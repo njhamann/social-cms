@@ -7,7 +7,7 @@ $info = json_decode($json);
 $items = $info->response->checkins->items;
 $data = array();
 $profileUrl = 'http://foursquare.com/njhamann';
-for($i=0; $i<5; $i++){
+for($i=0; $i<10; $i++){
     $item = $items[$i];
     $node = array(
         'id' => $item->id,
@@ -22,7 +22,11 @@ for($i=0; $i<5; $i++){
         'meta' => NULL,
         'feed' => NULL,
         'epoch' => $item->createdAt,
-        'profile_url' => $profileUrl
+        'profile_url' => $profileUrl,
+        'stash' => array(
+            'lat' => $item->venue->location->lat,
+            'lng' => $item->venue->location->lng
+        )
     );
     array_push($data, $node);
 }

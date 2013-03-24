@@ -40,7 +40,7 @@
                 <div class="span8 main-nav">
                     <ul class="pull-right unstyled">
                         <li class="dropdown">
-                            <a data-filter=".instagram-type, .foursquare-type, .facebook-type, .github-type, .twitter-type, .tumblr-type" href="#" class="active top-level">Networks <b class="caret"></b></a>
+                            <a data-filter=".instagram-type, .vine-type, .foursquare-type, .facebook-type, .github-type, .twitter-type, .tumblr-type" href="#" class="active top-level">Networks <b class="caret"></b></a>
                         
                         <ul class="dropdown-menu" role="menu">
                             <li><a tabindex="-1" href="#" data-filter=".facebook-type">Facebook</a></li>
@@ -48,6 +48,7 @@
                             <li><a tabindex="-1" href="#" data-filter=".github-type">Github</a></li>
                             <li><a tabindex="-1" href="#" data-filter=".instagram-type">Instagram</a></li>
                             <li><a tabindex="-1" href="#" data-filter=".twitter-type">Twitter</a></li>
+                            <li><a tabindex="-1" href="#" data-filter=".vine-type">Vine</a></li>
                         </ul> 
                         
                         </li>
@@ -161,14 +162,32 @@
     </div>
     <script type="text/html" id="modal">
         <div id="generic_modal" class="modal hide fade">
-            <% if(item.copy){ %>
+            <% if(item.copy || item.title){ %>
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <p class="lead"><%=item.copy%></p>
+                <p class="lead"><% item.copy ? print(item.copy) : print(item.title) %></p>
             </div>
             <% } %> 
             <div class="modal-body">
-                <img src="<%=item.image%>" />
+                <% if(item.type == 'instagram'){ %>
+                    <img src="<%=item.image%>" />
+                <% }else if(item.type == 'foursquare'){ %>
+                    <div style="height:500px; width:100%;" class="map-container" id="map_container"></div>
+                <% }else if(item.type == 'vine'){ %>
+                    <% if (Modernizr.video.h264){ %> 
+                    <video width="530" height="530" autoplay loop controls>
+                        <source src="<%= item.video_url %>" type="video/mp4" />
+                    </video>
+                    <% }else{ %>
+                    <object type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" width="530" height="530">
+                        <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
+                        <param name="allowFullScreen" value="true" />
+                        <param name="wmode" value="transparent" />
+                        <param name="flashVars" value="config={'playlist':[{'url':'<%= encodeURIComponent(item.video_url) %>','autoPlay':true}]}" />
+                        <span title="No video playback capabilities, please download the video below"><%= item.title %></span>
+                    </object>
+                    <% } %>
+                <% } %>
             </div>
         </div> 
     </script>
@@ -245,6 +264,8 @@
         </div>
         <% } %>
     </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUu-YInW-ntsJ4qEuotMhOKMc9X8Xf0Yk&sensor=false"></script>
+    <script src="js/modernizr.custom.js"></script>
     <script src="js/jquery-1.8.1.min.js"></script>
     <script src="js/underscore-min.js"></script>
     <script src="js/backbone-min.js"></script>

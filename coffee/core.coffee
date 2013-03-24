@@ -21,17 +21,62 @@ Modal = (apiPath) ->
             @render()                      
             return
         render: ->
-            console.log('ModelView');
+            _this = @
             $('#generic_modal').remove()
-            data = {};
-            data.item = this.model.toJSON()
-            templ = _.template this.template
-            @$el.append(templ(data));
-            $('#generic_modal').modal('show');
-            return
+            data = {}
+            data.item = @model.toJSON()
+            
+            templ = _.template @template
+            @$el.append templ data
 
+            $('#generic_modal').on 'hidden', ->
+                $('#generic_modal').remove()
+                return
+
+            $('#generic_modal').on 'shown', ->
+                if data.item.type is 'foursquare'
+                    _this.displayMap data
+                else if data.item.type is 'vine'
+                    _this.displayVideo data
+                return
+            
+            $('#generic_modal').modal 'show'
+            
+            return
+        
+        displayMap: (data)->
+            _this = @;
+            myLatLng = new google.maps.LatLng data.item.stash.lat, data.item.stash.lng
+            mapOptions =
+                mapTypeControl: true
+                mapTypeControlOptions: 
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                zoomControl: true
+                zoomControlOptions:
+                    style: google.maps.ZoomControlStyle.SMALL
+                center: myLatLng
+                zoom: 12
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+        
+            @map = new google.maps.Map document.getElementById("map_container"), mapOptions
+            
+            infowindow = new google.maps.InfoWindow
+                content: data.item.title
+                   
+            @marker = new google.maps.Marker
+                position: myLatLng
+                map: @map
+                title: data.item.title
+            
+            google.maps.event.addListener @marker, 'click', ->
+                console.log 'clicked marker'
+                infowindow.open _this.map, _this.marker
+                                 
+            return
+        displayVideo: (data)->
+            return 'hello' 
     return {
-        view: ModalView
+        View: ModalView
     }
 
 About = (apiPath) ->
@@ -82,14 +127,14 @@ Block = (apiPath) ->
         el: '#block_container'
         template: TEMPLATES.block
         initialize: ->
-            _this = this                       
-            this.collection.bind 'reset', ->
+            _this = @                    
+            @collection.bind 'reset', ->
                 _this.render()                      
             return
         render: ->
             data = {};
-            data.items = this.collection.toJSON()
-            templ = _.template this.template
+            data.items = @collection.toJSON()
+            templ = _.template @template
             $newItems = $(templ(data))
             CONFIG.$cont.isotope('insert', $newItems)
             setTimeout ->
@@ -98,8 +143,10 @@ Block = (apiPath) ->
                     sortAscending: false            
                 filter = $('.main-nav a.active').attr 'data-filter'
                 CONFIG.$cont.isotope filter: filter
-            ,1000
+                return
+            , 1000
             $('.item-link, .profile-link').tooltip()
+            getVineVideos @collection            
             return
     return {
         view: BlockView
@@ -116,18 +163,35 @@ init = ->
             number: ($el) -> 
                 parseInt($el.attr('data-epoch'), 10)
 
-
-    
     $(document).on 'click', '.instagram-type .item-image img', (e) ->
         e.preventDefault()
-        console.log 'hello2'
         id = $(e.target).parents('.instagram-type').attr 'data-id'
         item = Bootstrap.Collections.instagram.get id
         modal = new Modal()
-        modalView = new modal.view 
+        modalView = new modal.View
             model: item
         return    
 
+    $(document).on 'click', '.foursquare-type .item-image img', (e) ->
+        e.preventDefault()
+        id = $(e.target).parents('.foursquare-type').attr 'data-id'
+        item = Bootstrap.Collections.foursquare.get id
+        console.log item.toJSON()
+        modal = new Modal()
+        modalView = new modal.View
+            model: item
+        return    
+    
+    $(document).on 'click', '.vine-type .item-image img', (e) ->
+        e.preventDefault()
+        id = $(e.target).parents('.vine-type').attr 'data-id'
+        item = Bootstrap.Collections.twitter.get id
+        console.log item.toJSON()
+        modal = new Modal()
+        modalView = new modal.View
+            model: item
+        return    
+    
     $('.main-nav ul li').on 'click', 'a.top-level', (e) ->
         #filter
         e.preventDefault()
@@ -181,14 +245,6 @@ init = ->
                     return
         return
 
-    ###
-    tu = new Block CONFIG.baseUrl+'api/instagram.php'
-    tuc = new tu.collection()
-    tuv = new tu.view
-        collection: tuc
-    tuc.fetch()
-    ###
-
     fb = new Block CONFIG.baseUrl+'api/facebook.php'
     fbc = new fb.collection()
     fbv = new fb.view
@@ -237,7 +293,6 @@ init = ->
         model: am
     am.fetch()
 
-init();
 
 ga = ->
     events = ->
@@ -246,6 +301,26 @@ ga = ->
     return {
         events: events
     }
+
+getVineVideos = (c) ->
+    vineModels = c.where 'type': 'vine'
+    if vineModels.length > 0
+        for model in vineModels
+            $.ajax
+                url: '/api/get_vine_video.php'
+                data: 
+                    id: model.id
+                    vine_url: model.get 'link' 
+                success: (data) ->
+                    $el = $('[data-id='+data.id+']')
+                    vineModel = c.get data.id
+                    vineModel.set data
+                    $el.find('.item-image img').attr('src', data.screen_url);
+                    return
+    return
+
+
+init()
 g = new ga()
 g.events()
 

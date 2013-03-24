@@ -29,7 +29,7 @@ body {
   border-radius: 3px;
   background: #FFF;
   box-shadow: 0px 0px 4px #CCC; }
-  .page-item.instagram-type .item-image {
+  .page-item.instagram-type .item-image, .page-item.vine-type .item-image, .page-item.foursquare-type .item-image {
     cursor: pointer; }
   .page-item .icon-wrapper {
     border-radius: 3px;
@@ -241,6 +241,8 @@ ol {
 
 .modal-body {
   max-height: none; }
+  .modal-body .map-container img {
+    max-width: none; }
 
 #generic_modal {
   margin-top: 0px;
