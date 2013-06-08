@@ -1,6 +1,7 @@
 <?php
 //to get new long lived api key
-//https://graph.facebook.com/oauth/access_token?%20client_id=287692518015234&%20client_secret=04c8aa0de77e422c9cfc0530d1e16280&%20grant_type=fb_exchange_token&%20fb_exchange_token=AAAEFp6JXQQIBAFnA6PC8Jl7YcoTfgmOyKtpHZCuyN9TJfNZAqaZBZCLw3iUodd3lCjbRl4kao0AxYx9TDdFsUfufWQDrb5R9YmcnGAwXNQZDZD
+//go to https://developers.facebook.com/tools/explorer and get a short lived token and then use the url below to get long lived one
+//https://graph.facebook.com/oauth/access_token?client_id=287692518015234&client_secret=04c8aa0de77e422c9cfc0530d1e16280&grant_type=fb_exchange_token&fb_exchange_token=CAAEFp6JXQQIBAAgGkEsyIxmX0atCLKZAhTaPQE8eDBTZAyi7p9VaUrbspyZCHp6feWt5mZADdCvC8XUOV7frRknrYqPK5PNFKXLwe7SxKAexlqZBBLNdZC1ZBtAzTNa1EoPqCdppWZBlTeLQd65vKioE6sbHpzXVTfkG2adtSzeJiAZDZD
 
 header('Content-type: application/json');
 require('../config/keys.php');

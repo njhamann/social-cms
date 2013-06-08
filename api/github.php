@@ -1,9 +1,17 @@
 <?php
 header('Content-type: application/json');
 $url = 'https://api.github.com/users/njhamann/events/public';
-$json = file_get_contents($url);
-$info = json_decode($json);
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
 
+$json = curl_exec($ch);
+curl_close($ch);
+//$json = file_get_contents($url);
+$info = json_decode($json);
 $items = $info;
 $data = array();
 $defaultImage = 'img/default_github.png';
@@ -32,8 +40,10 @@ for($i=0; $i<10; $i++){
         }
     }else if($type == 'CreateEvent'){
         $copy = 'Created '.$branch.' at '.$repo;
-    }else if($type = 'WatchEvent'){
+    }else if($type == 'WatchEvent'){
         $copy = 'I '.$item->payload->action.' watching '.$repo; 
+    }else if($type == 'FollowEvent'){
+        $copy = 'I started following <a href="'.$item->payload->target->html_url.'">'.$item->payload->target->login.'</a>'; 
     }
     $node = array(
         'id' => $item->id,
