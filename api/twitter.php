@@ -7,6 +7,7 @@ require('../lib/util/linkify.php');
 
 function getConnectionWithAccessToken($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret) {
     $connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
+    $connection->host = "https://api.twitter.com/1.1/";
     return $connection;
 }
 
