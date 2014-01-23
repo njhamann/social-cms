@@ -73,6 +73,8 @@ for($i=0; $i<10; $i++){
     }else if($type == 'IssueCommentEvent'){
         $copy = 'I commented on an issue at ' . $repo;
         $commits = array(tokenTruncate($item->payload->comment->body, 200));
+    }else{
+	continue;
     }
     $node = array(
         'id' => $item->id,
