@@ -68,6 +68,7 @@ body {
   .page-item .item-headline {
     margin: 10px 10px; }
     .page-item .item-headline p {
+      word-wrap: break-word;
       font-size: 18px;
       font-weight: 400;
       font-family: 'Merriweather', serif;

@@ -80,6 +80,7 @@ background-image: url(../img/striped_lens.png); background-position: initial ini
     .item-headline{
         margin:10px 10px; 
         p{
+            word-wrap: break-word;
             font-size:18px;
             font-weight:400;
             font-family:'Merriweather', serif;    
