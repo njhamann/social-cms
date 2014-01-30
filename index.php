@@ -87,10 +87,10 @@
                                 </a>
                             </div>
                             <div class="span6">
-                                <a href="http://noahhamann.tumblr.com">
-                                    <img src="img/icon_tumblr.png" />
+                                <a href="http://instagram.com/njhamann">
+                                    <img src="img/icon_instagram.png" />
                                     <div class="item-copy">
-                                        <p>Tumblr</p>
+                                        <p>Instagram</p>
                                     </div>
                                 </a>
                             </div>
