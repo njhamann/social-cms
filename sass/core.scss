@@ -1,8 +1,8 @@
 body{
     padding:0 0 0 0;
     //background:#FFF;
-    background:#FAF9F4;
-background-image: url(../img/striped_lens.png); background-position: initial initial; background-repeat: initial initial; 
+    background:#ebebeb;
+//background-image: url(../img/striped_lens.png); background-position: initial initial; background-repeat: initial initial; 
 }
 .text-center{
     text-align: center;
@@ -26,9 +26,10 @@ background-image: url(../img/striped_lens.png); background-position: initial ini
     width:300px;
     margin:10px;
     min-height:200px;
-    border-radius: 3px;
+    //border-radius: 3px;
     background:#FFF;
-    box-shadow:0px 0px 4px #CCC;
+    //box-shadow:0px 0px 4px #CCC;
+    border-bottom:10px solid #f5f5f5;
     &.instagram-type, &.vine-type, &.foursquare-type{
         .item-image{
             cursor: pointer;
@@ -58,11 +59,11 @@ background-image: url(../img/striped_lens.png); background-position: initial ini
     
         text-align: left;
         overflow: hidden;
-        border-radius: 5px 5px 0 0;
+        //border-radius: 5px 5px 0 0;
         background: #CCC;
         min-height: 100px;
         max-height: 200px;
-        border: 1px solid #EEE;
+        //border: 1px solid #EEE;
     
     }
     .item-icon{
@@ -185,11 +186,11 @@ background-image: url(../img/striped_lens.png); background-position: initial ini
 }
 
 .fluid-header{
-    border-bottom: 5px solid #EEE;
+    //border-bottom: 5px solid #EEE;
     padding:10px 0 5px 0;
     color: #666;
     background: #FFF; /* Old browsers */
-    box-shadow: 0px 0px 7px #999;
+    //box-shadow: 0px 0px 7px #999;
     p.lead{
         font-family:'Merriweather', serif;
         margin:0;

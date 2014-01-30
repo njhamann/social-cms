@@ -180,7 +180,7 @@
     var a, am, av, f, fb, fbc, fbv, fc, fv, g, gc, gv, i, ic, iv, p, pc, pv, t, tc, tv;
     CONFIG.$cont.isotope({
       itemSelector: '.page-item',
-      layoutMode: 'masonry',
+      layoutMode: 'fitRows',
       getSortData: {
         number: function($el) {
           return parseInt($el.attr('data-epoch'), 10);
